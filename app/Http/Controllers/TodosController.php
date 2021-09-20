@@ -3,24 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Todo; //useするのを忘れずに！
+use App\Models\Todo; //useするのを忘れずに！
 
 class TodosController extends Controller
 {
     public function index() {
         $todos = Todo::all();
-        return view('todos.index')->with('todos', $todos);
+        return view('index')->with('todos', $todos);
     }
 
-    public function delete(Request $request) {
-        $todo = Todo::find($request->id);
+    public function destroy(todo $todo) {
         $todo->delete();
-        return redirect('/');
-    }
+       return redirect('/');
+     }
 
     public function store(Request $request) {
-        $todo = $request->task;
-        Todo::create(['content' => $request->task]);
-        return redirect('/');
+      $todo = new Todo();
+      $todo->body = $request->body;
+      $todo->save();
+      return redirect('/');
+    }
+
+    public function update(Request $request,todo $todo) {
+      $todo->body = $request->body;
+      $todo->save();
+      return redirect('/');
     }
 }

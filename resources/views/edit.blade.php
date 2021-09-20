@@ -8,54 +8,21 @@
   <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
+
   <body>
     <div class="container" style="margin-top:50px;">
-    <h1>Todoリスト追加</h1>
+    <h1>Todoリスト更新</h1>
 
-    <form action='{{ url('/todos')}}' method="post">
+    <form action='{{ url('/todos',$todo->id) }}' method="post">
       {{csrf_field()}}
+      {{ method_field('patch')}}
   <div class="form-group">
-    <label >やることを追加してください</label>
-    <input type="text" name="body"class="form-control" placeholder="todo list" style="max-width:1000px;">
+    <label >やることを更新してください</label>
+    <input type="text" name="body"class="form-control" value="{{ $todo->body }}" style="max-width:1000px;">
   </div>
-  <button type="submit" class="btn btn-primary">追加する</button>  </form>
+  <button type="submit" class="btn btn-primary">更新する</button>
+</form>
 
-    <h1 style="margin-top:50px;">Todoリスト</h1>
-    <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
-    <!-- <thead>
-    <tr>
-      <th></th><th></th><th></th>
-    </tr>
-  </thead> -->
-  <tbody>
-    @foreach ($todos as $todo)
-    <tr>
-      <td>{{$todo->body}}</td>
-      <td><form action="{{ action('TodosController@edit', $todo) }}" method="post">
-          {{ csrf_field() }}
-          {{ method_field('get') }}
-          <button type="submit" class="btn btn-primary">編集</button>
-      </form>
-      </td>
-
-      <!-- 削除ボタン -->
-      <td><form action="{{url('/todos', $todo->id)}}" method="post">
-          {{ csrf_field() }}
-          {{ method_field('delete') }}
-          <button type="submit" class="btn btn-danger">削除</button>
-      </form>
-      </td>
-
-      <!-- 削除した際にポップ画面で確認をする -->
-      <!-- <td><a class="del" data-id="{{ $todo->id }}" href="#">削除</a>
-        <form method="post" action='{{ url('/todos', $todo->id) }}' id="form_{{ $todo->id}}">
-          {{ csrf_field() }}
-          {{ method_field('delete') }}
-        </form>
-      </td> -->
-    </tr>
-    @endforeach
-  </table>
 </div>
   <!-- オプションのJavaScript -->
   <!-- 最初にjQuery、次にPopper.js、次にBootstrap JS -->

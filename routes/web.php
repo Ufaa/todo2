@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/',[TodosController::class, 'index']);
-Route::post('/',[TodosController::class, 'store']);
-Route::delete('/',[TodosController::class, 'delete']);
+//Route::get('/',[TodosController::class, 'index']);
+//Route::post('/',[TodosController::class, 'store']);
+//Route::delete('/',[TodosController::class, 'delete']);
+
+
+Route::get('/',[TodosController::class, 'index']); 
+Route::resource('todos','TodosController');
