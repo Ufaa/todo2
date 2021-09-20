@@ -17,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/','TodosController@index');
+Route::get('/',[TodosController::class, 'index']);
+Route::post('/',[TodosController::class, 'store']);
+Route::delete('/',[TodosController::class, 'delete']);

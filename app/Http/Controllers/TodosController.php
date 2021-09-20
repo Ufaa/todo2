@@ -11,4 +11,16 @@ class TodosController extends Controller
         $todos = Todo::all();
         return view('todos.index')->with('todos', $todos);
     }
+
+    public function delete(Request $request) {
+        $todo = Todo::find($request->id);
+        $todo->delete();
+        return redirect('/');
+    }
+
+    public function store(Request $request) {
+        $todo = $request->task;
+        Todo::create(['content' => $request->task]);
+        return redirect('/');
+    }
 }

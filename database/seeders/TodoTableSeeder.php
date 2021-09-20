@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB; // ←これを追加
+use DateTime;
 
 class TodoTableSeeder extends Seeder
 {
