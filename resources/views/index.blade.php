@@ -12,7 +12,7 @@
     <div class="container" style="margin-top:50px;">
     <h1>Todoリスト追加</h1>
 
-    <form action='{{ url('/todos')}}' method="post">
+    <form action="/todos" method="post">
       {{csrf_field()}}
   <div class="form-group">
     <label >やることを追加してください</label>
@@ -39,7 +39,7 @@
       </td>
 
       <!-- 削除ボタン -->
-      <td><form action="{{url('/todos', $todo->id)}}" method="post">
+      <td><form action="/todos, $todo->id" method="post">
           {{ csrf_field() }}
           {{ method_field('delete') }}
           <button type="submit" class="btn btn-danger">削除</button>

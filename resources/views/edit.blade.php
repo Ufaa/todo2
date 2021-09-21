@@ -13,7 +13,7 @@
     <div class="container" style="margin-top:50px;">
     <h1>Todoリスト更新</h1>
 
-    <form action='{{ url('/todos',$todo->id) }}' method="post">
+    <form action="/todos',$todo->id" method="post">
       {{csrf_field()}}
       {{ method_field('patch')}}
   <div class="form-group">
