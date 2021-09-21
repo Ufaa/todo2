@@ -16,7 +16,7 @@
       {{csrf_field()}}
   <div class="form-group">
     <label >やることを追加してください</label>
-    <input type="text" name="body"class="form-control" placeholder="todo list" style="max-width:1000px;">
+    <input type="text" name="content"class="form-control" placeholder="todo list" style="max-width:1000px;">
   </div>
   <button type="submit" class="btn btn-primary">追加する</button>  </form>
 
@@ -31,7 +31,7 @@
     @foreach ($todos as $todo)
     <tr>
       <td>{{$todo->body}}</td>
-      <td><form action="{{ action('TodosController@edit', $todo) }}" method="post">
+      <td><form action="/todos',$todo->id"  method="post">
           {{ csrf_field() }}
           {{ method_field('get') }}
           <button type="submit" class="btn btn-primary">編集</button>

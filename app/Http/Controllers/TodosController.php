@@ -19,13 +19,13 @@ class TodosController extends Controller
 
     public function store(Request $request) {
       $todo = new Todo();
-      $todo->body = $request->body;
+      $todo->content = $request->content;
       $todo->save();
       return redirect('/');
     }
 
     public function update(Request $request,todo $todo) {
-      $todo->body = $request->body;
+      $todo->content = $request->content;
       $todo->save();
       return redirect('/');
     }

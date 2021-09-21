@@ -24,4 +24,9 @@ use App\Http\Controllers\TodosController;
 
 
 Route::get('/',[TodosController::class, 'index']); 
-Route::resource('todos','TodosController');
+Route::resource('todos',TodosController::class);
+
+//Route::get('/',[TodosController::class, 'index']); 
+//Route::post('/',[TodosController::class, 'store']);
+//Route::delete('/',[TodosController::class, 'destroy']);
+//Route::put('/',[TodosController::class, 'update']);
