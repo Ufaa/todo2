@@ -24,6 +24,7 @@ use App\Http\Controllers\TodosController;
 
 
 Route::get('/',[TodosController::class, 'index']); 
+//Route::put('/',[TodosController::class, 'update']);
 //Route::get('todos/{id}','TodosController@index')->name('todos');
 Route::resource('todos',TodosController::class);
 

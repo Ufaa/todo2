@@ -26,8 +26,9 @@ class TodosController extends Controller
     }
 
     public function update(Request $request,todo $todo) {
+      return view('edit')->with('todo',$todo);
       $todo->content = $request->content;
       $todo->save();
-      return redirect('/');
+      return redirect('/')->with('todo',$todo);
     }
 }

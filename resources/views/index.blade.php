@@ -33,7 +33,7 @@
       <td>{{$todo->content}}</td>
       <td><form action="{{route('todos.update',$todo->id)}}" method="post">
           {{ csrf_field() }}
-          {{ method_field('get') }}
+          {{ method_field('put') }}
           <button type="submit" class="btn btn-primary">編集</button>
       </form>
       </td>
