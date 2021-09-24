@@ -31,28 +31,19 @@
     @foreach ($todos as $todo)
     <tr>
       <td>{{$todo->content}}</td>
-      <td><form action="{{route('todos',$todo->id)}}" method="post">
+      <td><form action="{{route('todos.update',$todo->id)}}" method="post">
           {{ csrf_field() }}
           {{ method_field('get') }}
           <button type="submit" class="btn btn-primary">編集</button>
       </form>
       </td>
 
-      <!-- 削除ボタン 間違い /todos, $todo->id-->
-      <td><form action="{{route('todos',$todo->id)}}" method="post">
+      <td><form action="{{route('todos.destroy',$todo->id)}}" method="post">
           {{ csrf_field() }}
           {{ method_field('delete') }}
           <button type="submit" class="btn btn-danger">削除</button>
       </form>
       </td>
-
-      <!-- 削除した際にポップ画面で確認をする -->
-      <!-- <td><a class="del" data-id="{{ $todo->id }}" href="#">削除</a>
-        <form method="post" action='{{ url('/todos', $todo->id) }}' id="form_{{ $todo->id}}">
-          {{ csrf_field() }}
-          {{ method_field('delete') }}
-        </form>
-      </td> -->
     </tr>
     @endforeach
   </table>
