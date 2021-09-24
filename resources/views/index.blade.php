@@ -30,16 +30,16 @@
   <tbody>
     @foreach ($todos as $todo)
     <tr>
-      <td>{{$todo->body}}</td>
-      <td><form action="/todos',$todo->id"  method="post">
+      <td>{{$todo->content}}</td>
+      <td><form action="{{route('todos',$todo->id)}}" method="post">
           {{ csrf_field() }}
           {{ method_field('get') }}
           <button type="submit" class="btn btn-primary">編集</button>
       </form>
       </td>
 
-      <!-- 削除ボタン -->
-      <td><form action="/todos, $todo->id" method="post">
+      <!-- 削除ボタン 間違い /todos, $todo->id-->
+      <td><form action="{{route('todos',$todo->id)}}" method="post">
           {{ csrf_field() }}
           {{ method_field('delete') }}
           <button type="submit" class="btn btn-danger">削除</button>
