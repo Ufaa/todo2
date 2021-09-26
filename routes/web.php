@@ -28,7 +28,8 @@ Route::get('/',[TodosController::class, 'index']);
 //Route::get('todos/{id}','TodosController@index')->name('todos');
 Route::resource('todos',TodosController::class);
 
+
 //Route::get('/',[TodosController::class, 'index']); 
-//Route::post('/',[TodosController::class, 'store']);
-//Route::delete('/',[TodosController::class, 'destroy']);
-//Route::put('/',[TodosController::class, 'update']);
+//Route::post('todos',[TodosController::class, 'store']);
+//Route::delete('todos',[TodosController::class, 'destroy']);
+//Route::put('todos',[TodosController::class, 'update']);

@@ -14,26 +14,39 @@
 
     <form action="/todos" method="post">
       {{csrf_field()}}
-  <div class="form-group">
-    <label >やることを追加してください</label>
-    <input type="text" name="content"class="form-control" placeholder="todo list" style="max-width:1000px;">
-  </div>
-  <button type="submit" class="btn btn-primary">追加する</button>  </form>
+      <div class="form-group">
+        <label>やることを追加してください</label>
+        <input type="text" name="content"class="form-control" placeholder="todo list" style="max-width:1000px;">
+      </div>
+        <button type="submit" class="btn btn-primary">追加</button>  
+      </form>
 
     <h1 style="margin-top:50px;">Todoリスト</h1>
     <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
-    <!-- <thead>
+
+  <thead>
     <tr>
-      <th></th><th></th><th></th>
+      <th>ID</th>
+      <th>タスク名</th>
+      <th>作成日</th>
+      <th>更新日</th>
+      <th>編集</th>
+      <th>削除</th>
     </tr>
-  </thead> -->
+  </thead>
+
   <tbody>
     @foreach ($todos as $todo)
     <tr>
+      <td>{{$todo->id}}</td>
       <td>{{$todo->content}}</td>
+      <td>{{$todo->created_at}}</td>
+      <td>{{$todo->updated_at}}</td>
+
       <td><form action="{{route('todos.update',$todo->id)}}" method="post">
           {{ csrf_field() }}
-          {{ method_field('put') }}
+          {{ method_field('PUT') }}
+          <input type="text" name="content" value="{{$todo->content}}">
           <button type="submit" class="btn btn-primary">編集</button>
       </form>
       </td>
@@ -47,7 +60,10 @@
     </tr>
     @endforeach
   </table>
+
 </div>
+
+
   <!-- オプションのJavaScript -->
   <!-- 最初にjQuery、次にPopper.js、次にBootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

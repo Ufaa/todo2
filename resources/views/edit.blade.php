@@ -15,7 +15,7 @@
 
     <form action="{{route('todos.update',$todo->id)}}" method="post">
       {{csrf_field()}}
-      {{ method_field('patch')}}
+      {{method_field('PUT')}}
   <div class="form-group">
     <label >やることを更新してください</label>
     <input type="text" name="content"class="form-control" value="{{ $todo->content }}" style="max-width:1000px;">
