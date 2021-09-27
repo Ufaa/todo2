@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <title>Jum Todoリスト</title>
+    <title>Todoリスト</title>
   <!-- 必要なメタタグ -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container" style="margin-top:50px;">
-    <h1>Todoリスト追加</h1>
+    <h1>Todoリスト</h1>
 
     <form action="/todos" method="post">
       {{csrf_field()}}
@@ -26,11 +26,11 @@
 
   <thead>
     <tr>
-      <th>ID</th>
-      <th>タスク名</th>
+      <!--<th>ID</th>-->
       <th>作成日</th>
-      <th>更新日</th>
-      <th>編集</th>
+      <th>タスク名</th>
+      <!--<th>更新日</th>-->
+      <th>更新</th>
       <th>削除</th>
     </tr>
   </thead>
@@ -38,16 +38,16 @@
   <tbody>
     @foreach ($todos as $todo)
     <tr>
-      <td>{{$todo->id}}</td>
-      <td>{{$todo->content}}</td>
+      <!--<td>{{$todo->id}}</td>-->
+      <!--<td>{{$todo->content}}</td>-->
       <td>{{$todo->created_at}}</td>
-      <td>{{$todo->updated_at}}</td>
+      <!--<td>{{$todo->updated_at}}</td>-->
 
       <td><form action="{{route('todos.update',$todo->id)}}" method="post">
           {{ csrf_field() }}
           {{ method_field('PUT') }}
           <input type="text" name="content" value="{{$todo->content}}">
-          <button type="submit" class="btn btn-primary">編集</button>
+          <button type="submit" class="btn btn-primary">更新</button>
       </form>
       </td>
 
@@ -55,7 +55,7 @@
           {{ csrf_field() }}
           {{ method_field('delete') }}
           <button type="submit" class="btn btn-danger">削除</button>
-      </form>
+      </form>        
       </td>
     </tr>
     @endforeach
