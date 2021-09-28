@@ -19,13 +19,23 @@ class TodosController extends Controller
      }
 
     public function store(Request $request) {
+        $validate_rule = [
+            'content' => 'required|max:20',
+        ];
+        $this->validate($request, $validate_rule);
+
       $todo = new Todo();
       $todo->content = $request->content;
-      $todo->save();
+      $todo->save();       
       return redirect('/');
     }
 
     public function update(Request $request,todo $todo) {
+                $validate_rule = [
+            'content' => 'required|max:20',
+        ];
+        $this->validate($request, $validate_rule);
+        
       //dd($request);
       //return view('edit')->with('todo',$todo);
       $todo->content = $request->content;
