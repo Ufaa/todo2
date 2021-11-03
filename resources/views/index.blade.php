@@ -120,13 +120,12 @@
       </div>
     </form>
 
-    @section('content')
     <form action="find" method="POST">
-      @csrf
+      {{csrf_field()}}
       <input type="text" name="content" value="{{$input ?? ''}}">
       <input type="submit" value="見つける">
     </form>
-    @if (@isset($todo))
+      @if (@isset($todo))
     <table>
       <tr>
         <th>Data</th>
@@ -138,7 +137,6 @@
       </tr>
     </table>
     @endif
-    @endsection
 
     <!--<h1 style="margin-top:50px;">Todoリスト</h1>-->
     <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
