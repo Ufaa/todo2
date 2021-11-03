@@ -45,4 +45,18 @@ class TodosController extends Controller
       return redirect('/')->with('todo',$todo);
       //return view('/')->with('todo',$todo);
     }
+
+  public function find()
+  {
+    return view('find', ['input' => '']);
+  }
+  public function search(Request $request)
+  {
+    $item = Todo::where('name', 'LIKE', "%{$request->input}%")->first();
+    $param = [
+      'input' => $request->input,
+      'todo' => $todo
+    ];
+    return view('find', $param);
+  }
 }
