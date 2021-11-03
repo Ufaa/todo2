@@ -8,7 +8,9 @@ use App\Models\Todo; //useするのを忘れずに！
 class TodosController extends Controller
 {
     public function index() {
-        $todos = Todo::all();
+        //ページネーション追加（Simpleをつけるかつけないか）
+        $todos = Todo::Paginate(10);
+        //$todos = Todo::all();
         //dd($todos);
         return view('index')->with('todos', $todos);
     }
@@ -20,7 +22,7 @@ class TodosController extends Controller
 
     public function store(Request $request) {
         $validate_rule = [
-            'content' => 'required|max:20',
+            'content' => 'required|max:50',
         ];
         $this->validate($request, $validate_rule);
 
@@ -32,7 +34,7 @@ class TodosController extends Controller
 
     public function update(Request $request,todo $todo) {
                 $validate_rule = [
-            'content' => 'required|max:20',
+            'content' => 'required',
         ];
         $this->validate($request, $validate_rule);
         
