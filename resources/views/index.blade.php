@@ -120,12 +120,12 @@
       </div>
     </form>
 
-    <form action="/todos" method="get">
+    <form action="{{route('index.search')}}" method="post">
       {{csrf_field()}}
       <input type="text" name="content" value="{{$input ?? ''}}">
       <input type="submit" value="見つける">
     </form>
-      @if (@isset($todo))
+    @if (@isset($todo))
     <table>
       <tr>
         <th>Data</th>

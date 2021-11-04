@@ -23,13 +23,13 @@ use App\Http\Controllers\TodosController;
 //Route::delete('/',[TodosController::class, 'delete']);
 
 
-Route::get('/',[TodosController::class, 'index']); 
+Route::get('/',[TodosController::class, 'index'])->name('index'); 
 //Route::put('/',[TodosController::class, 'update']);
 //Route::get('todos/{id}','TodosController@index')->name('todos');
 Route::resource('todos',TodosController::class);
 
-Route::get('/', [TodosController::class, 'find']);
-Route::post('/', [TodosController::class, 'search']);
+//Route::get('/', [TodosController::class, 'find']);
+Route::post('/', [TodosController::class, 'search'])->name('index.search');
 
 //Route::get('/',[TodosController::class, 'index']); 
 //Route::post('todos',[TodosController::class, 'store']);

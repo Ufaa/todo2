@@ -46,17 +46,18 @@ class TodosController extends Controller
       //return view('/')->with('todo',$todo);
     }
 
-  public function find()
-  {
-    return view('/', ['input' => '']);
-  }
+  //public function find()
+  //{
+  //  return view('/', ['input' => '']);
+  //}
   public function search(Request $request,todo $todo )
   {
-    $todo = Todo::where('name', 'LIKE', "%{$request->input}%")->first();
+    $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->get();
+    //dd($todo);
     $param = [
-      'input' => $request->input,
+      'input' => $request->content,
       'todo' => $todo
     ];
-    return view('/', $param);
+    return view('index', $param);
   }
 }
