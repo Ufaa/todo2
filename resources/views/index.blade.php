@@ -120,7 +120,7 @@
       </div>
     </form>
 
-    <form action="find" method="POST">
+    <form action="/todos" method="get">
       {{csrf_field()}}
       <input type="text" name="content" value="{{$input ?? ''}}">
       <input type="submit" value="見つける">

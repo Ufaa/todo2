@@ -50,7 +50,7 @@ class TodosController extends Controller
   {
     return view('/', ['input' => '']);
   }
-  public function search(Request $request)
+  public function search(Request $request,todo $todo )
   {
     $todo = Todo::where('name', 'LIKE', "%{$request->input}%")->first();
     $param = [

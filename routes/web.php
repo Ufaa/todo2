@@ -29,7 +29,7 @@ Route::get('/',[TodosController::class, 'index']);
 Route::resource('todos',TodosController::class);
 
 Route::get('/', [TodosController::class, 'find']);
-//Route::post('/', [TodosController::class, 'search']);
+Route::post('/', [TodosController::class, 'search']);
 
 //Route::get('/',[TodosController::class, 'index']); 
 //Route::post('todos',[TodosController::class, 'store']);
