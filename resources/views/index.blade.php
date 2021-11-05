@@ -132,7 +132,7 @@
       </tr>
       <tr>
         <td>
-          {{$todo->getDetail()}}
+          {{$todo->content()}}
         </td>
       </tr>
     </table>
@@ -154,7 +154,7 @@
       </thead>
 
       <tbody>
-        @foreach ($todos as $todo)
+        @foreach ($todos ?? '' as $todo)
         <tr>
           <!--<td>{{$todo->id}}</td>-->
           <!--<td>{{$todo->content}}</td>-->
@@ -180,7 +180,7 @@
         </tr>
         @endforeach
         <!--ページネーションのページ別リンク追記-->
-        {{ $todos->links() }}
+        {{ $todos ?? ''->links() }}
     </table>
   </div>
 

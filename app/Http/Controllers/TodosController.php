@@ -54,10 +54,7 @@ class TodosController extends Controller
   {
     $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->get();
     //dd($todo);
-    $param = [
-      'input' => $request->content,
-      'todo' => $todo
-    ];
-    return view('index', $param);
+    $todo->content = $request->content;
+    return view('index', $request);
   }
 }
