@@ -52,6 +52,10 @@ class TodosController extends Controller
   //}
   public function search(Request $request)
   {
+    $validate_rule = [
+      'content' => 'required',
+    ];
+    $this->validate($request, $validate_rule);
     $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->paginate(10);
     //dd($todo);
     return view('index')->with('todos', $todo);
