@@ -116,12 +116,11 @@
   <div class="container" style="">
     <h2>Todo List</h2>
 
-
     <form action="/todos" method="post">
       {{csrf_field()}}
       @if ($errors->has('content'))
       <tr>
-        <th>ERROR</th>
+        <th>新規タスクが記入されていません。</th>
         <td>
           {{$errors->first('content')}}
         </td>
@@ -138,9 +137,9 @@
       {{csrf_field()}}
       @if ($errors->has('content2'))
       <tr>
-        <th>ERROR</th>
+        <th>検索タスクが記入されていません。</th>
         <td>
-          {{$errors->get('content2')}}
+          {{$errors->first('content2')}}
         </td>
       </tr>
       @endif

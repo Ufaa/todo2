@@ -33,7 +33,7 @@ class TodosController extends Controller
     }
 
     public function update(Request $request,todo $todo) {
-                $validate_rule = [
+        $validate_rule = [
             'content' => 'required',
         ];
         $this->validate($request, $validate_rule);
@@ -53,7 +53,7 @@ class TodosController extends Controller
   public function search(Request $request)
   {
     $validate_rule = [
-      'content' => 'required',
+      'content2' => 'required',
     ];
     $this->validate($request, $validate_rule);
     $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->paginate(10);
