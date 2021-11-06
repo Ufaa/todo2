@@ -116,15 +116,17 @@
   <div class="container" style="">
     <h2>Todo List</h2>
 
-    <div class="error">
-      <p>{{$txt ?? ''}}</p>
-      @if (count($errors) > 0)
-      <p>※入力に問題があります</p>
-      @endif
-    </div>
 
     <form action="/todos" method="post">
       {{csrf_field()}}
+      @if ($errors->has('content'))
+      <tr>
+        <th>ERROR</th>
+        <td>
+          {{$errors->first('content')}}
+        </td>
+      </tr>
+      @endif
       <div class="form-group">
         <!--<label>やることを追加してください</label>-->
         <input type="text" name="content" class="form-control" placeholder="" style="width:675px;">
@@ -134,15 +136,18 @@
 
     <form action="{{route('index.search')}}" method="post">
       {{csrf_field()}}
-      <input type="text" name="content" value="{{$input ?? ''}}">
+      @if ($errors->has('content2'))
+      <tr>
+        <th>ERROR</th>
+        <td>
+          {{$errors->get('content2')}}
+        </td>
+      </tr>
+      @endif
+      <input type="text" name="content2" value="{{$input ?? ''}}">
       <input type="submit" value="見つける">
     </form>
-    <div class="error">
-      <p>{{$txt ?? ''}}</p>
-      @if (count($errors) > 0)
-      <p>※入力に問題があります</p>
-      @endif
-    </div>
+
 
     <!--<h1 style="margin-top:50px;">Todoリスト</h1>-->
     <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
