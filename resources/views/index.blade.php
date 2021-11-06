@@ -113,7 +113,7 @@
 
 <body>
 
-  <div class="container" style="">
+  <div class="container">
     <h2>Todo List</h2>
 
     <form action="/todos" method="post">

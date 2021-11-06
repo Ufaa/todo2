@@ -21,11 +21,8 @@ class TodosController extends Controller
        return redirect('/');
      }
 
-    public function store(Request $request) {
-        $validate_rule = [
-            'content' => 'required|max:50',
-        ];
-        $this->validate($request, $validate_rule);
+    public function store(ClientRequest $request) {
+        
 
       $todo = new Todo();
       $todo->content = $request->content;
@@ -33,11 +30,8 @@ class TodosController extends Controller
       return redirect('/');
     }
 
-    public function update(Request $request,todo $todo) {
-        $validate_rule = [
-            'content' => 'required',
-        ];
-        $this->validate($request, $validate_rule);
+    public function update(ClientRequest $request,todo $todo) {
+        
         
       //dd($request);
       //return view('edit')->with('todo',$todo);
@@ -51,12 +45,9 @@ class TodosController extends Controller
   //{
   //  return view('/', ['input' => '']);
   //}
-  public function search(Request $request)
+  public function search(ClientRequest $request)
   {
-    $validate_rule = [
-      'content2' => 'required',
-    ];
-    $this->validate($request, $validate_rule);
+    
     $todo = Todo::where('content', 'LIKE', "%{$request->content2}%")->paginate(10);
     //dd($todo);
     return view('index')->with('todos', $todo);
