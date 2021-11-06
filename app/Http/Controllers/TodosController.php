@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 use App\Models\Todo; //useするのを忘れずに！
 
 class TodosController extends Controller
