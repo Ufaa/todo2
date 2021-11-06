@@ -50,11 +50,10 @@ class TodosController extends Controller
   //{
   //  return view('/', ['input' => '']);
   //}
-  public function search(Request $request,todo $todo )
+  public function search(Request $request)
   {
-    $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->get();
-    //dd($todo);
-    $todo->content = $request->content;
-    return view('index', $request);
+    $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->paginate(10);
+    //dd($todos);
+    return view('todos', $todo);
   }
 }

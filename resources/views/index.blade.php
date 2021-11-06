@@ -125,18 +125,6 @@
       <input type="text" name="content" value="{{$input ?? ''}}">
       <input type="submit" value="見つける">
     </form>
-    @if (@isset($todo))
-    <table>
-      <tr>
-        <th>Data</th>
-      </tr>
-      <tr>
-        <td>
-          {{$todo->content()}}
-        </td>
-      </tr>
-    </table>
-    @endif
 
     <!--<h1 style="margin-top:50px;">Todoリスト</h1>-->
     <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
