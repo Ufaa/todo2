@@ -53,7 +53,7 @@ class TodosController extends Controller
   public function search(Request $request)
   {
     $todo = Todo::where('content', 'LIKE', "%{$request->content}%")->paginate(10);
-    //dd($todos);
-    return view('todos', $todo);
+    //dd($todo);
+    return view('index')->with('todos', $todo);
   }
 }
