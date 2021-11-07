@@ -50,8 +50,8 @@ class ClientRequest extends FormRequest
     public function messages()
     {
         return [
-            'content.required' => '※タスクを入力してください',
-            'content2.required' => '※検索タスクを入力してください'
+            'content.required' => '※追加するタスクを入力してください',
+            'content2.required' => '※検索するタスクを入力してください'
         ];
     }
 
