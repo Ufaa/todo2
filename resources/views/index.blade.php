@@ -15,10 +15,6 @@
       display: relative;
     }
 
-    .error {
-      color: red;
-    }
-
     .container {
       width: 900px;
       display: absolute;
@@ -27,6 +23,10 @@
       background-color: white;
       border-radius: 10px;
       padding: 15px 30px 30px 30px;
+    }
+
+    .container2 p {
+      color: red;
     }
 
     .form-group {
@@ -114,38 +114,40 @@
 <body>
 
   <div class="container">
-    <h2>Todo List</h2>
+    <div class="container2">
+      <h2>Todo List</h2>
 
-    <form action="/todos" method="post">
-      {{csrf_field()}}
-      @if ($errors->has('content'))
-      <tr>
-        <th>新規タスクが記入されていません。</th>
-        <td>
-          {{$errors->first('content')}}
-        </td>
-      </tr>
-      @endif
-      <div class="form-group">
-        <!--<label>やることを追加してください</label>-->
-        <input type="text" name="content" class="form-control" placeholder="" style="width:675px;">
-        <button type="submit" class="btn btn-primary">追加</button>
-      </div>
-    </form>
+      <form action="/todos" method="post">
+        {{csrf_field()}}
+        @if ($errors->has('content'))
+        <tr>
+          <th></th>
+          <td>
+            <p>{{$errors->first('content')}}</p>
+          </td>
+        </tr>
+        @endif
+        <div class="form-group">
+          <!--<label>やることを追加してください</label>-->
+          <input type="text" name="content" class="form-control" placeholder="" style="width:675px;">
+          <button type="submit" class="btn btn-primary">追加</button>
+        </div>
+      </form>
 
-    <form action="{{route('index.search')}}" method="post">
-      {{csrf_field()}}
-      @if ($errors->has('content2'))
-      <tr>
-        <th>検索タスクが記入されていません。</th>
-        <td>
-          {{$errors->first('content2')}}
-        </td>
-      </tr>
-      @endif
-      <input type="text" name="content2" value="{{$input ?? ''}}">
-      <input type="submit" value="見つける">
-    </form>
+      <form action="{{route('index.search')}}" method="post">
+        {{csrf_field()}}
+        @if ($errors->has('content2'))
+        <tr>
+          <th></th>
+          <td>
+            <p>{{$errors->first('content2')}}</p>
+          </td>
+        </tr>
+        @endif
+        <input type="text" name="content2" value="{{$input ?? ''}}">
+        <input type="submit" value="見つける">
+      </form>
+    </div>
 
 
     <!--<h1 style="margin-top:50px;">Todoリスト</h1>-->

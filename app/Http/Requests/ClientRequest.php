@@ -14,7 +14,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == '/') {
+        if ($this->path() ) {
             return true;
         } else {
             return false;
@@ -27,15 +27,36 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        // バリデーションルールをまとめる配列です。
+        $rules = [];
+
+        // $this->has()は$request->has()のことです。
+        // has()で指定した項目の有無を確認し、あればルールを追加します。    
+        if ($this->has('content')) {
+            $rules['content'] = 'required';
+        }
+
+        if ($this->has('content2')) {
+            $rules['content2'] = 'required';
+        }
+
+        return $rules;
+        /*return [
             'content' => 'required',
-        ];
+            'content2' => 'required'
+        ];*/
     }
 
     public function messages()
     {
         return [
-            'content.required' => 'タスクを入力してください',
+            'content.required' => '※タスクを入力してください',
+            'content2.required' => '※検索タスクを入力してください'
         ];
+    }
+
+    protected function getRedirectUrl()
+    {
+        return '/';
     }
 }
