@@ -14,9 +14,6 @@ class AddColumnDeletedAtToTodosTable extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('content');
-            $table->timestamps();
             $table->softDeletes();
         });
     }

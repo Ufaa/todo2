@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodosController;
+use App\Models\Todo;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,25 @@ Route::resource('todos',TodosController::class);
 
 //Route::get('/', [TodosController::class, 'find']);
 Route::post('/', [TodosController::class, 'search'])->name('index.search');
+
+//論理削除したデータを確認する「/softdelete/get」にアクセスすると論理削除したデータが見れる。
+Route::get('softdelete/get', function () {
+  $todo = Todo::onlyTrashed()->get();
+  dd($todo);
+});
+
+//論理削除されたレコードの復元「/softdelete/store」にアクセすると復元する。
+Route::get('softdelete/store', function () {
+  $result = Todo::onlyTrashed()->restore();
+  echo $result;
+});
+
+//論理削除されたレコードの完全削除「/softdelete/absolute」にアクセスすると完全に削除される。
+Route::get('softdelete/absolute', function () {
+  $result = Todo::onlyTrashed()->forceDelete();
+  echo $result;
+});
+
 
 //Route::get('/',[TodosController::class, 'index']); 
 //Route::post('todos',[TodosController::class, 'store']);
