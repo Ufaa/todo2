@@ -59,7 +59,7 @@ class TodosController extends Controller
     $todos = Todo::Paginate(10);
     //$todos = Todo::all();
     //dd($todos);
-    return view('index.archive')->with('todos', $todos);
+    return view('archive')->with('todos', $todos);
   }
 }
 
