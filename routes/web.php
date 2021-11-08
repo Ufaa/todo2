@@ -50,6 +50,9 @@ Route::get('softdelete/absolute', function () {
   echo $result;
 });
 
+//論理削除されたものを含んで表示させる機能
+Route::post('archive', [TodosController::class, 'archive'])->name('index.archive');
+
 
 //Route::get('/',[TodosController::class, 'index']); 
 //Route::post('todos',[TodosController::class, 'store']);

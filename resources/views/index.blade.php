@@ -147,6 +147,14 @@
         <input type="text" name="content2" value="{{$input ?? ''}}">
         <input type="submit" value="見つける">
       </form>
+
+      <!--アーカイブ表示機能-->
+      <form action="{{route('index.archive')}}" method="post">
+        {{csrf_field()}}
+        　<div>
+          <button type="submit" class="btn btn-archive">アーカイブ</button>
+        </div>
+      </form>
     </div>
 
 

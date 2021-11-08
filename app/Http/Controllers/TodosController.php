@@ -52,4 +52,15 @@ class TodosController extends Controller
     //dd($todo);
     return view('index')->with('todos', $todo);
   }
+
+  //論理削除されたものを含んで表示させる機能
+  public function show()
+  {
+    $todos = Todo::Paginate(10);
+    //$todos = Todo::all();
+    //dd($todos);
+    return view('index.archive')->with('todos', $todos);
+  }
 }
+
+

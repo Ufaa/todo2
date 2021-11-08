@@ -13,11 +13,11 @@ class HelloTest extends TestCase
 
     public function testHello()
     {
-        Todo::factory()->create([
-            'contents'=>'タイヤ'
+        Todo::create([
+            'content'=>'タイヤ'
         ]);
         $this->assertDatabaseHas('todos',[
-            'contents'=>'タイヤ'
+            'content'=>'タイヤ'
         ]);
     }
 }
