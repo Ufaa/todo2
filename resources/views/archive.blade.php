@@ -120,7 +120,7 @@
       <form action="{{route('index')}}" method="post">
         {{csrf_field()}}
         　<div>
-          <button type="submit" class="btn btn-INDEX">一覧に戻る</button>
+          <button type="submit" class="btn btn-index">一覧に戻る</button>
         </div>
 
         <form action="{{route('index.search')}}" method="post">

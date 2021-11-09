@@ -56,16 +56,12 @@ class TodosController extends Controller
   //論理削除されたものを含んで表示させる機能
   public function show()
   {
-    $todos = Todo::Paginate(10);
+    $todos =   Todo::onlyTrashed()->get();
     //$todos = Todo::all();
     //dd($todos);
     return view('archive')->with('todos', $todos);
   }
-
-  public function foo()
-{
-    return $this->belongsTo('App\Models\Todo','content')->withTrashed();
-}
+  
 }
 
 
