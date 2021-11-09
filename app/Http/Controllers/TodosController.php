@@ -61,6 +61,11 @@ class TodosController extends Controller
     //dd($todos);
     return view('archive')->with('todos', $todos);
   }
+
+  public function foo()
+{
+    return $this->belongsTo('App\Models\Todo','content')->withTrashed();
+}
 }
 
 
