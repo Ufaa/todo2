@@ -122,21 +122,7 @@
         　<div>
           <button type="submit" class="btn btn-index">一覧に戻る</button>
         </div>
-
-        <form action="{{route('index.search')}}" method="post">
-          {{csrf_field()}}
-          @if ($errors->has('content2'))
-
-          <tr>
-            <th></th>
-            <td>
-              <p>{{$errors->first('content2')}}</p>
-            </td>
-          </tr>
-          @endif
-          <input type="text" name="content2" value="{{$input ?? ''}}">
-          <input type="submit" value="見つける">
-        </form>
+      </form>
     </div>
 
 
@@ -178,8 +164,8 @@
           </td>
         </tr>
         @endforeach
-        <!--ページネーションのページ別リンク追記-->
-        {{ $todos ?? ''->links() }}
+        <!--ページネーションのページ別リンク追記
+        {{ $todos ?? ''->links() }}-->
     </table>
   </div>
 
